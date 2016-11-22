@@ -1,4 +1,4 @@
-package br.udesc.ceavi.designpatterns.projetopratico;
+package br.udesc.ceavi.designpatterns.projetopratico.models;
 
 public class BluRayMovie implements Movie {
 
