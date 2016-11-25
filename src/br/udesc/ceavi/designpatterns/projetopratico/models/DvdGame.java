@@ -8,4 +8,34 @@ public class DvdGame implements Game {
 	public int getNumberOfPlayers() {
 		return 0;
 	}
+
+	@Override
+	public String getTitle() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Double getValue() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setTitle() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setValue() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setNumberOfPlayers() {
+		// TODO Auto-generated method stub
+		
+	}
 }

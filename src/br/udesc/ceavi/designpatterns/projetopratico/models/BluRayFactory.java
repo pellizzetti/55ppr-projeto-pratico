@@ -9,5 +9,4 @@ public class BluRayFactory implements FormatFactory {
   public Movie createMovie() {
     return new BluRayMovie();
   }
-
 }

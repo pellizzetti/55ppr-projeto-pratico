@@ -91,18 +91,8 @@ public class Client {
 			}
 		});
 		
-		JMenuItem mntmCadastrarEmprestimo = new JMenuItem("Empréstimo");
-		mntmCadastrarEmprestimo.addActionListener(new ActionListener() {
-			
-			public void actionPerformed(ActionEvent e) {
-				
-				JOptionPane.showMessageDialog(frmPrincipal, "Empréstimos");
-			}
-		});
-		
 		mnCadastros.add(mntmCadastrarClientes);
 		mnCadastros.add(mntmCadastrarProdutos);
-		mnCadastros.add(mntmCadastrarEmprestimo);
 		
 		JMenu mnListagem = new JMenu("Listar");
 		menuBar.add(mnListagem);
