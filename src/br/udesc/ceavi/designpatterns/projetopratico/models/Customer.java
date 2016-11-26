@@ -8,9 +8,14 @@ import br.udesc.ceavi.designpatterns.projetopratico.dao.interfaces.CustomerDao;
 
 public class Customer {
 
-	private Long id;
+	private Long id = null;
 	private String firstName;
 	private String lastName;
+	
+	public Customer(final String firstName, final String lastName) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+	}
 
 	public Customer(final Long id, final String firstName, final String lastName) {
 		this.id = id;

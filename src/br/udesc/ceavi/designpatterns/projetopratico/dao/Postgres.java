@@ -10,22 +10,22 @@ import br.udesc.ceavi.designpatterns.projetopratico.dao.interfaces.CustomerDao;
 public class Postgres extends DaoFactory {
 
 	private static final String DRIVER   = "org.postgresql.Driver";
-    private static final String DATABASE = "lan_house";
-    private static final String URL      = "localhost:5430/";
-    private static final String LINK     = "jdbc:postgresql://" + URL + DATABASE;
-    private static final String USER     = "postgres";
-    private static final String PASSWORD = "databox99182599";
+	private static final String DATABASE = "55ppr";
+	private static final String URL      = "localhost:5430/";
+	private static final String LINK     = "jdbc:postgresql://" + URL + DATABASE;
+	private static final String USER     = "postgres";
+	private static final String PASSWORD = "";
 
 	public Connection openConnection() {
 		try {
 			Class.forName(DRIVER).newInstance();
 			Connection conn = DriverManager.getConnection(LINK, USER, PASSWORD);
-			
+
 			return conn;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (Exception ex) {
-			System.err.println("Não foi possível salvar os dados! O Banco de dados não estão respondendo!");
+			System.err.println("Não foi possível criar a conexão com o banco de dados, verifique as configurações de conexão e se o driver foi instalado!");
 		}
 		return null;
 	}

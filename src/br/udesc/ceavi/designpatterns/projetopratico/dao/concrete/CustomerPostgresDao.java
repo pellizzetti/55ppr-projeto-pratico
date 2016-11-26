@@ -12,15 +12,15 @@ import br.udesc.ceavi.designpatterns.projetopratico.dao.interfaces.CustomerDao;
 import br.udesc.ceavi.designpatterns.projetopratico.models.Customer;
 
 public class CustomerPostgresDao implements CustomerDao {
-	
-	private static final String INSERT = "INSERT INTO users (first_name, last_name) VALUES (?, ?)";
-	private static final String	DELETE = "DELETE FROM users where id = ?";
-	private static final String FIND_ALL = "SELECT * FROM users";	
-	private static final String	FIND_BY_ID = "SELECT * FROM users WHERE id = ?";
-	
+
+	private static final String INSERT     = "INSERT INTO customers (customer_firstname, customer_lastname) VALUES (?, ?)";
+	private static final String DELETE     = "DELETE FROM customers where id = ?";
+	private static final String FIND_ALL   = "SELECT * FROM customers";
+	private static final String FIND_BY_ID = "SELECT * FROM customers WHERE id = ?";
+
 	public Customer insert(Customer aCustomer) throws SQLException {
 		Connection c = DaoFactory.getDatabase("Postgres").openConnection();
-		
+
 		PreparedStatement pstmt = c.prepareStatement(INSERT, PreparedStatement.RETURN_GENERATED_KEYS);
 
 		pstmt.setString(1, aCustomer.getFirstName());
@@ -36,28 +36,28 @@ public class CustomerPostgresDao implements CustomerDao {
 
 		pstmt.close();
 		c.close();
-		
+
 		return aCustomer;
 	}
 
 	public List<Customer> findAll() throws SQLException {
 		ArrayList<Customer> customers = new ArrayList<Customer>();
-		
+
 		Connection c = DaoFactory.getDatabase("Postgres").openConnection();
 		PreparedStatement pstmt = c.prepareStatement(FIND_ALL);
 
 		Customer aCustomer = null;
 		ResultSet rset = pstmt.executeQuery();
-		
-		while (rset.next()){
-			
-			Long id = rset.getLong("id");
-			String firstName = rset.getString("first_name");
-            String lastName = rset.getString("last_name");
 
-            aCustomer = new Customer(id, firstName, lastName);
-            
-            customers.add(aCustomer);
+		while (rset.next()) {
+
+			Long id = rset.getLong("customer_id");
+			String firstName = rset.getString("customer_firstname");
+			String lastName = rset.getString("customer_lastname");
+
+			aCustomer = new Customer(id, firstName, lastName);
+
+			customers.add(aCustomer);
 		}
 
 		pstmt.close();
@@ -65,38 +65,38 @@ public class CustomerPostgresDao implements CustomerDao {
 
 		return customers;
 	}
-	
+
 	public int delete(Customer aCustomer) throws SQLException {
-		
+
 		Connection c = DaoFactory.getDatabase("Postgres").openConnection();
 		PreparedStatement pstmt = c.prepareStatement(DELETE);
-		
+
 		pstmt.setLong(1, aCustomer.getId());
-		
+
 		int rowsAffected = pstmt.executeUpdate();
-		
+
 		pstmt.close();
 		c.close();
-		
+
 		return rowsAffected;
 	}
-	
+
 	public Customer findById(Long id) throws SQLException {
-		
+
 		Connection c = DaoFactory.getDatabase("Postgres").openConnection();
 		PreparedStatement pstmt = c.prepareStatement(FIND_BY_ID);
-		
+
 		pstmt.setLong(1, id);
-		
+
 		Customer aCustomer = null;
 		ResultSet rset = pstmt.executeQuery();
 
-		while (rset.next()){
-			
-			String firstName = rset.getString("first_name");
-            String lastName = rset.getString("last_name");
+		while (rset.next()) {
 
-            aCustomer = new Customer(id, firstName, lastName);
+			String firstName = rset.getString("customer_first_name");
+			String lastName = rset.getString("customer_last_name");
+
+			aCustomer = new Customer(id, firstName, lastName);
 		}
 
 		pstmt.close();
