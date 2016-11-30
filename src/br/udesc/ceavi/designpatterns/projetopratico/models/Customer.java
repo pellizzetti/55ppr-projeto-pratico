@@ -4,7 +4,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import br.udesc.ceavi.designpatterns.projetopratico.dao.DaoFactory;
-import br.udesc.ceavi.designpatterns.projetopratico.dao.interfaces.CustomerDao;
+import br.udesc.ceavi.designpatterns.projetopratico.dao.interfaces.GenericDao;
 
 public class Customer {
 
@@ -69,7 +69,7 @@ public class Customer {
 		return dao().findById(id);
 	}
 
-	private static CustomerDao dao() {
+	private static GenericDao<Customer> dao() {
 		DaoFactory dao = DaoFactory.getDatabase("Postgres");
 		return dao.getCustomerDao();
 	}

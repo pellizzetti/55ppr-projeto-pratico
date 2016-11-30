@@ -16,7 +16,7 @@ CREATE DATABASE "55ppr"
 
 CREATE TABLE public.customers
 (
-  customer_id integer NOT NULL DEFAULT nextval('customers_customer_id_seq'::regclass),
+  customer_id serial,
   customer_firstname character varying(200),
   customer_lastname character varying(200),
   CONSTRAINT customers_pk PRIMARY KEY (customer_id)

@@ -8,10 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.udesc.ceavi.designpatterns.projetopratico.dao.DaoFactory;
-import br.udesc.ceavi.designpatterns.projetopratico.dao.interfaces.CustomerDao;
+import br.udesc.ceavi.designpatterns.projetopratico.dao.interfaces.GenericDao;
 import br.udesc.ceavi.designpatterns.projetopratico.models.Customer;
 
-public class CustomerPostgresDao implements CustomerDao {
+public class CustomerPostgresDao implements GenericDao<Customer> {
 
 	private static final String INSERT     = "INSERT INTO customers (customer_firstname, customer_lastname) VALUES (?, ?)";
 	private static final String DELETE     = "DELETE FROM customers where id = ?";

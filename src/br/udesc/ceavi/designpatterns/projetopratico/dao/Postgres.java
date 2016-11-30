@@ -5,13 +5,13 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 import br.udesc.ceavi.designpatterns.projetopratico.dao.concrete.CustomerPostgresDao;
-import br.udesc.ceavi.designpatterns.projetopratico.dao.interfaces.CustomerDao;
+import br.udesc.ceavi.designpatterns.projetopratico.dao.interfaces.GenericDao;
 
 public class Postgres extends DaoFactory {
 
 	private static final String DRIVER   = "org.postgresql.Driver";
 	private static final String DATABASE = "55ppr";
-	private static final String URL      = "localhost:5430/";
+	private static final String URL      = "localhost:4000/";
 	private static final String LINK     = "jdbc:postgresql://" + URL + DATABASE;
 	private static final String USER     = "postgres";
 	private static final String PASSWORD = "";
@@ -25,13 +25,13 @@ public class Postgres extends DaoFactory {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (Exception ex) {
-			System.err.println("Não foi possível criar a conexão com o banco de dados, verifique as configurações de conexão e se o driver foi instalado!");
+			System.err.println("Nï¿½o foi possï¿½vel criar a conexï¿½o com o banco de dados, verifique as configuraï¿½ï¿½es de conexï¿½o e se o driver foi instalado!");
 		}
 		return null;
 	}
 
 	@Override
-	public CustomerDao getCustomerDao() {
+	public GenericDao getCustomerDao() {
 		return new CustomerPostgresDao();
 	}
 }
