@@ -1,9 +1,7 @@
 package br.udesc.ceavi.designpatterns.projetopratico.models;
 
-public class BluRayGame implements Game {
-	private int numberOfPlayers;
-	private String platform;
-	
+public class BluRayGame extends Game {
+
 	@Override
 	public int getNumberOfPlayers() {
 		return 0;
@@ -24,18 +22,18 @@ public class BluRayGame implements Game {
 	@Override
 	public void setTitle() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void setValue() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void setNumberOfPlayers() {
 		// TODO Auto-generated method stub
-		
-	}	
+
+	}
 }

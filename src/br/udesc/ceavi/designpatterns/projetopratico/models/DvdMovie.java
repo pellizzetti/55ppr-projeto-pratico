@@ -1,6 +1,6 @@
 package br.udesc.ceavi.designpatterns.projetopratico.models;
 
-public class DvdMovie implements Movie {
+public class DvdMovie extends Movie {
 
 	static final String TITLE = "This is a DVD movie!";
 

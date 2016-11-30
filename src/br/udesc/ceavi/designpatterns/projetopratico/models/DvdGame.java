@@ -1,8 +1,6 @@
 package br.udesc.ceavi.designpatterns.projetopratico.models;
 
-public class DvdGame implements Game {
-	private int numberOfPlayers;
-	private String platform;
+public class DvdGame extends Game {
 
 	@Override
 	public int getNumberOfPlayers() {
