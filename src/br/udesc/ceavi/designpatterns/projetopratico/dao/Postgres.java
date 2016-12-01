@@ -19,7 +19,7 @@ public class Postgres extends DaoFactory {
 	private static final String URL      = "localhost:5430/";
 	private static final String LINK     = "jdbc:postgresql://" + URL + DATABASE;
 	private static final String USER     = "postgres";
-	private static final String PASSWORD = "databox99182599";
+	private static final String PASSWORD = "udescceavi";
 
 	public Connection openConnection() {
 		try {
