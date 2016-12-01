@@ -6,6 +6,7 @@ import java.util.List;
 
 import br.udesc.ceavi.designpatterns.projetopratico.dao.DaoFactory;
 import br.udesc.ceavi.designpatterns.projetopratico.dao.interfaces.GenericDao;
+import br.udesc.ceavi.designpatterns.projetopratico.strategies.MovieCalculatorFactory;
 
 public abstract class Movie {
 
@@ -14,12 +15,15 @@ public abstract class Movie {
 	protected String synopsis;
 	protected LocalDate releaseDate;
 	protected String format;
+	protected MovieCalculatorFactory strategyFactory;
 
 	public Movie(String title, String synopsis, LocalDate releaseDate, String format) {
 		this.title = title;
 		this.synopsis = synopsis;
 		this.releaseDate = releaseDate;
 		this.format = format;
+		
+		this.strategyFactory = new MovieCalculatorFactory();
 	}
 
 	public Movie(Long id, String title, String synopsis, LocalDate releaseDate, String format) {
@@ -28,6 +32,8 @@ public abstract class Movie {
 		this.synopsis = synopsis;
 		this.releaseDate = releaseDate;
 		this.format = format;
+		
+		this.strategyFactory = new MovieCalculatorFactory();
 	}
 
 	public Long getId() {
@@ -65,11 +71,15 @@ public abstract class Movie {
 	public String getFormat() {
 		return format;
 	}
+	
+	public double getValue() {
+		return strategyFactory.getFlyweight(this).calculateValue(this);
+	}
 
 	@Override
 	public String toString() {
 		return "Movie [id=" + id + ", title=" + title + ", synopsis=" + synopsis + ", releaseDate=" + releaseDate
-				+ ", format=" + format + "]";
+				+ ", format=" + format + ", value=" + getValue() + "]";
 	}
 
 	public void insert() throws SQLException {

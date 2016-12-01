@@ -6,6 +6,7 @@ import java.util.List;
 
 import br.udesc.ceavi.designpatterns.projetopratico.dao.DaoFactory;
 import br.udesc.ceavi.designpatterns.projetopratico.dao.interfaces.GenericDao;
+import br.udesc.ceavi.designpatterns.projetopratico.strategies.GameCalculatorFactory;
 
 public abstract class Game {
 
@@ -13,6 +14,8 @@ public abstract class Game {
 	protected String title;
 	protected LocalDate releaseDate;
 	protected int numberOfPlayers;
+	//protected CalculateRentalValue<Game> valueStrategy;
+	protected GameCalculatorFactory strategyFactory;
 	
 	protected String format;
 	
@@ -21,6 +24,9 @@ public abstract class Game {
 		this.numberOfPlayers = numberOfPlayers;
 		this.releaseDate = releaseDate;
 		this.format = format;
+		
+		//this.valueStrategy = new CalculateGameValueByReleaseDate();
+		this.strategyFactory = new GameCalculatorFactory();
 	}
 	
 	public Game(Long id, String title, int numberOfPlayers, LocalDate releaseDate, String format) {
@@ -29,6 +35,9 @@ public abstract class Game {
 		this.numberOfPlayers = numberOfPlayers;
 		this.releaseDate = releaseDate;
 		this.format = format;
+		
+		//this.valueStrategy = new CalculateGameValueByReleaseDate();
+		this.strategyFactory = new GameCalculatorFactory();
 	}
 
 	public Long getId() {
@@ -67,10 +76,15 @@ public abstract class Game {
 		return format;
 	}
 	
+	public double getValue() {
+		//return valueStrategy.calculateValue(this);
+		return strategyFactory.getFlyweight(this).calculateValue(this);
+	}
+
 	@Override
 	public String toString() {
 		return "Game [id=" + id + ", title=" + title + ", releaseDate=" + releaseDate + ", numberOfPlayers="
-				+ numberOfPlayers + ", format=" + format + "]";
+				+ numberOfPlayers + ", format=" + format + ", value=" + getValue() + "]";
 	}
 
 	public void insert() throws SQLException {

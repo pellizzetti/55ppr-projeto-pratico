@@ -58,7 +58,7 @@ public class ControllerTest {
 		FormatFactory factory = new BluRayFactory();
 
 		System.out.println("Criando jogos...");
-		Game aBluRayGame = factory.createGame("Blu-ray Game 1", 4, LocalDate.of(2013, 2, 10));
+		Game aBluRayGame = factory.createGame("Blu-ray Game 1", 4, LocalDate.of(2016, 10, 11));
 		gameController.insert(aBluRayGame);
 
 		System.out.println("Criando filmes...");
