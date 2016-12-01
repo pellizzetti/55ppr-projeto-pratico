@@ -3,7 +3,7 @@ package br.udesc.ceavi.designpatterns.projetopratico.controllers;
 import java.sql.SQLException;
 import java.util.List;
 
-import br.udesc.ceavi.designpatterns.projetopratico.models.Game;
+import br.udesc.ceavi.designpatterns.projetopratico.models.product.Game;
 
 public class GameController {
 

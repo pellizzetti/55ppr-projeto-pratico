@@ -1,4 +1,4 @@
-package br.udesc.ceavi.designpatterns.projetopratico.models;
+package br.udesc.ceavi.designpatterns.projetopratico.models.customer;
 
 import java.sql.SQLException;
 import java.util.List;

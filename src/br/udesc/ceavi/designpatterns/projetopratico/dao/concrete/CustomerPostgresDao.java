@@ -9,7 +9,7 @@ import java.util.List;
 
 import br.udesc.ceavi.designpatterns.projetopratico.dao.DaoFactory;
 import br.udesc.ceavi.designpatterns.projetopratico.dao.interfaces.GenericDao;
-import br.udesc.ceavi.designpatterns.projetopratico.models.Customer;
+import br.udesc.ceavi.designpatterns.projetopratico.models.customer.Customer;
 
 public class CustomerPostgresDao implements GenericDao<Customer> {
 

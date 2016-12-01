@@ -4,7 +4,7 @@ import java.sql.SQLException;
 
 import javax.swing.JTable;
 
-import br.udesc.ceavi.designpatterns.projetopratico.models.Customer;
+import br.udesc.ceavi.designpatterns.projetopratico.models.customer.Customer;
 
 public class CustomerTable extends JTable {
 

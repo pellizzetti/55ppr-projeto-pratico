@@ -8,18 +8,18 @@ import br.udesc.ceavi.designpatterns.projetopratico.dao.concrete.CustomerPostgre
 import br.udesc.ceavi.designpatterns.projetopratico.dao.concrete.GamePostgresDao;
 import br.udesc.ceavi.designpatterns.projetopratico.dao.concrete.MoviePostgresDao;
 import br.udesc.ceavi.designpatterns.projetopratico.dao.interfaces.GenericDao;
-import br.udesc.ceavi.designpatterns.projetopratico.models.Customer;
-import br.udesc.ceavi.designpatterns.projetopratico.models.Game;
-import br.udesc.ceavi.designpatterns.projetopratico.models.Movie;
+import br.udesc.ceavi.designpatterns.projetopratico.models.customer.Customer;
+import br.udesc.ceavi.designpatterns.projetopratico.models.product.Game;
+import br.udesc.ceavi.designpatterns.projetopratico.models.product.Movie;
 
 public class Postgres extends DaoFactory {
 
 	private static final String DRIVER   = "org.postgresql.Driver";
 	private static final String DATABASE = "55ppr";
-	private static final String URL      = "localhost:5430/";
+	private static final String URL      = "localhost:4000/";
 	private static final String LINK     = "jdbc:postgresql://" + URL + DATABASE;
 	private static final String USER     = "postgres";
-	private static final String PASSWORD = "udescceavi";
+	private static final String PASSWORD = "12345";
 
 	public Connection openConnection() {
 		try {
@@ -31,7 +31,7 @@ public class Postgres extends DaoFactory {
 			e.printStackTrace();
 		} catch (Exception ex) {
 			System.err.println(
-					"Não foi possível conectar com o banco de dados, verifique as configurações de conexão e se o driver foi instalado!");
+					"NÃ£o foi possÃ­vel conectar com o banco de dados, verifique as configuraÃ§Ãµes de conexÃ£o e se o driver foi instalado!");
 		}
 		return null;
 	}

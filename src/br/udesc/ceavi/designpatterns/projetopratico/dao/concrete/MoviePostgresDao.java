@@ -4,18 +4,19 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 import br.udesc.ceavi.designpatterns.projetopratico.dao.DaoFactory;
 import br.udesc.ceavi.designpatterns.projetopratico.dao.interfaces.GenericDao;
-import br.udesc.ceavi.designpatterns.projetopratico.models.BluRayMovie;
-import br.udesc.ceavi.designpatterns.projetopratico.models.DvdMovie;
-import br.udesc.ceavi.designpatterns.projetopratico.models.Movie;
+import br.udesc.ceavi.designpatterns.projetopratico.models.product.BluRayMovie;
+import br.udesc.ceavi.designpatterns.projetopratico.models.product.DvdMovie;
+import br.udesc.ceavi.designpatterns.projetopratico.models.product.Movie;
 
 public class MoviePostgresDao implements GenericDao<Movie> {
 
-	private static final String INSERT = "INSERT INTO movies (movie_title, movie_synopsis, movie_format) VALUES (?, ?, ?)";
+	private static final String INSERT = "INSERT INTO movies (movie_title, movie_synopsis, movie_release_date, movie_format) VALUES (?, ?, ?, ?)";
 	private static final String DELETE = "DELETE FROM movies where movie_id = ?";
 	private static final String FIND_ALL = "SELECT * FROM movies";
 	private static final String FIND_BY_ID = "SELECT * FROM movies WHERE movie_id = ?";
@@ -27,7 +28,8 @@ public class MoviePostgresDao implements GenericDao<Movie> {
 
 		pstmt.setString(1, aMovie.getTitle());
 		pstmt.setString(2, aMovie.getSynopsis());
-		pstmt.setString(3, aMovie.getFormat());
+		pstmt.setDate(3, java.sql.Date.valueOf(aMovie.getReleaseDate()));
+		pstmt.setString(4, aMovie.getFormat());
 
 		pstmt.executeUpdate();
 
@@ -57,12 +59,13 @@ public class MoviePostgresDao implements GenericDao<Movie> {
 			Long id = rset.getLong("movie_id");
 			String title = rset.getString("movie_title");
 			String synopsis = rset.getString("movie_synopsis");
+			LocalDate releaseDate = rset.getDate("movie_release_date").toLocalDate();
 			String format = rset.getString("movie_format");
 			
 			if (format.equals("Blu-ray")) {
-				aMovie = new BluRayMovie(id, title, synopsis);
+				aMovie = new BluRayMovie(id, title, synopsis, releaseDate);
 			} else if (format.equals("DVD")) {
-				aMovie = new DvdMovie(id, title, synopsis);
+				aMovie = new DvdMovie(id, title, synopsis, releaseDate);
 			}
 
 			movies.add(aMovie);
@@ -103,12 +106,13 @@ public class MoviePostgresDao implements GenericDao<Movie> {
 
 			String title = rset.getString("movie_title");
 			String synopsis = rset.getString("movie_synopsis");
+			LocalDate releaseDate = rset.getDate("movie_release_date").toLocalDate();
 			String format = rset.getString("movie_format");
 			
 			if (format.equals("Blu-ray")) {
-				aMovie = new BluRayMovie(id, title, synopsis);
+				aMovie = new BluRayMovie(id, title, synopsis, releaseDate);
 			} else if (format.equals("DVD")) {
-				aMovie = new DvdMovie(id, title, synopsis);
+				aMovie = new DvdMovie(id, title, synopsis, releaseDate);
 			}
 			
 		}

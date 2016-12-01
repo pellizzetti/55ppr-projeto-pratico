@@ -4,18 +4,19 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 import br.udesc.ceavi.designpatterns.projetopratico.dao.DaoFactory;
 import br.udesc.ceavi.designpatterns.projetopratico.dao.interfaces.GenericDao;
-import br.udesc.ceavi.designpatterns.projetopratico.models.BluRayGame;
-import br.udesc.ceavi.designpatterns.projetopratico.models.DvdGame;
-import br.udesc.ceavi.designpatterns.projetopratico.models.Game;
+import br.udesc.ceavi.designpatterns.projetopratico.models.product.BluRayGame;
+import br.udesc.ceavi.designpatterns.projetopratico.models.product.DvdGame;
+import br.udesc.ceavi.designpatterns.projetopratico.models.product.Game;
 
 public class GamePostgresDao implements GenericDao<Game> {
 
-	private static final String INSERT = "INSERT INTO games (game_title, game_number_players, game_format) VALUES (?, ?, ?)";
+	private static final String INSERT = "INSERT INTO games (game_title, game_number_players, game_release_date, game_format) VALUES (?, ?, ?, ?)";
 	private static final String DELETE = "DELETE FROM games where game_id = ?";
 	private static final String FIND_ALL = "SELECT * FROM games";
 	private static final String FIND_BY_ID = "SELECT * FROM games WHERE game_id = ?";
@@ -27,7 +28,8 @@ public class GamePostgresDao implements GenericDao<Game> {
 
 		pstmt.setString(1, aGame.getTitle());
 		pstmt.setInt(2, aGame.getNumberOfPlayers());
-		pstmt.setString(3, aGame.getFormat());
+		pstmt.setDate(3, java.sql.Date.valueOf(aGame.getReleaseDate()));
+		pstmt.setString(4, aGame.getFormat());
 
 		pstmt.executeUpdate();
 
@@ -57,12 +59,13 @@ public class GamePostgresDao implements GenericDao<Game> {
 			Long id = rset.getLong("game_id");
 			String title = rset.getString("game_title");
 			int numberOfPlayers = rset.getInt("game_number_players");
+			LocalDate releaseDate = rset.getDate("game_release_date").toLocalDate();
 			String format = rset.getString("game_format");
 			
 			if (format.equals("Blu-ray")) {
-				aGame = new BluRayGame(id, title, numberOfPlayers);
+				aGame = new BluRayGame(id, title, numberOfPlayers, releaseDate);
 			} else if (format.equals("DVD")) {
-				aGame = new DvdGame(id, title, numberOfPlayers);
+				aGame = new DvdGame(id, title, numberOfPlayers, releaseDate);
 			}
 
 			games.add(aGame);
@@ -103,12 +106,13 @@ public class GamePostgresDao implements GenericDao<Game> {
 
 			String title = rset.getString("game_title");
 			int numberOfPlayers = rset.getInt("game_number_players");
+			LocalDate releaseDate = rset.getDate("game_release_date").toLocalDate();
 			String format = rset.getString("game_format");
 			
 			if (format.equals("Blu-ray")) {
-				aGame = new BluRayGame(id, title, numberOfPlayers);
+				aGame = new BluRayGame(id, title, numberOfPlayers, releaseDate);
 			} else if (format.equals("DVD")) {
-				aGame = new DvdGame(id, title, numberOfPlayers);
+				aGame = new DvdGame(id, title, numberOfPlayers, releaseDate);
 			}
 			
 		}

@@ -5,11 +5,12 @@ import java.util.List;
 
 public interface GenericDao<T> {
 
-	public T insert(T object) throws SQLException;
+	T insert(T object) throws SQLException;
 
-	public int delete(T object) throws SQLException;
+	int delete(T object) throws SQLException;
 
-	public List<T> findAll() throws SQLException;
+	List<T> findAll() throws SQLException;
 
-	public T findById(Long id) throws SQLException;
+	T findById(Long id) throws SQLException;
+	
 }

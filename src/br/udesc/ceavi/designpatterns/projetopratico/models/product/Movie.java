@@ -1,6 +1,7 @@
-package br.udesc.ceavi.designpatterns.projetopratico.models;
+package br.udesc.ceavi.designpatterns.projetopratico.models.product;
 
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.List;
 
 import br.udesc.ceavi.designpatterns.projetopratico.dao.DaoFactory;
@@ -11,18 +12,21 @@ public abstract class Movie {
 	protected Long id;
 	protected String title;
 	protected String synopsis;
+	protected LocalDate releaseDate;
 	protected String format;
 
-	public Movie(String title, String synopsis, String format) {
+	public Movie(String title, String synopsis, LocalDate releaseDate, String format) {
 		this.title = title;
 		this.synopsis = synopsis;
+		this.releaseDate = releaseDate;
 		this.format = format;
 	}
 
-	public Movie(Long id, String title, String synopsis, String format) {
+	public Movie(Long id, String title, String synopsis, LocalDate releaseDate, String format) {
 		this.id = id;
 		this.title = title;
 		this.synopsis = synopsis;
+		this.releaseDate = releaseDate;
 		this.format = format;
 	}
 
@@ -49,6 +53,14 @@ public abstract class Movie {
 	public void setSynopsis(String synopsis) {
 		this.synopsis = synopsis;
 	}
+	
+	public LocalDate getReleaseDate() {
+		return releaseDate;
+	}
+
+	public void setReleaseDate(LocalDate releaseDate) {
+		this.releaseDate = releaseDate;
+	}
 
 	public String getFormat() {
 		return format;
@@ -56,7 +68,8 @@ public abstract class Movie {
 
 	@Override
 	public String toString() {
-		return "Movie [id=" + id + ", title=" + title + ", synopsis=" + synopsis + ", format=" + format + "]";
+		return "Movie [id=" + id + ", title=" + title + ", synopsis=" + synopsis + ", releaseDate=" + releaseDate
+				+ ", format=" + format + "]";
 	}
 
 	public void insert() throws SQLException {

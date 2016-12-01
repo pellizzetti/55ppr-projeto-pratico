@@ -1,6 +1,7 @@
-package br.udesc.ceavi.designpatterns.projetopratico.models;
+package br.udesc.ceavi.designpatterns.projetopratico.models.product;
 
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.List;
 
 import br.udesc.ceavi.designpatterns.projetopratico.dao.DaoFactory;
@@ -10,19 +11,23 @@ public abstract class Game {
 
 	protected Long id;
 	protected String title;
+	protected LocalDate releaseDate;
 	protected int numberOfPlayers;
+	
 	protected String format;
 	
-	public Game(String title, int numberOfPlayers, String format) {
+	public Game(String title, int numberOfPlayers, LocalDate releaseDate, String format) {
 		this.title = title;
 		this.numberOfPlayers = numberOfPlayers;
+		this.releaseDate = releaseDate;
 		this.format = format;
 	}
 	
-	public Game(Long id, String title, int numberOfPlayers, String format) {
+	public Game(Long id, String title, int numberOfPlayers, LocalDate releaseDate, String format) {
 		this.id = id;
 		this.title = title;
 		this.numberOfPlayers = numberOfPlayers;
+		this.releaseDate = releaseDate;
 		this.format = format;
 	}
 
@@ -42,6 +47,14 @@ public abstract class Game {
 		this.title = title;
 	}
 
+	public LocalDate getReleaseDate() {
+		return releaseDate;
+	}
+
+	public void setReleaseDate(LocalDate releaseDate) {
+		this.releaseDate = releaseDate;
+	}
+
 	public int getNumberOfPlayers() {
 		return numberOfPlayers;
 	}
@@ -53,13 +66,13 @@ public abstract class Game {
 	public String getFormat() {
 		return format;
 	}
-
+	
 	@Override
 	public String toString() {
-		return "Game [id=" + id + ", title=" + title + ", numberOfPlayers=" + numberOfPlayers + ", format=" + format
-				+ "]";
+		return "Game [id=" + id + ", title=" + title + ", releaseDate=" + releaseDate + ", numberOfPlayers="
+				+ numberOfPlayers + ", format=" + format + "]";
 	}
-	
+
 	public void insert() throws SQLException {
 		dao().insert(this);
 	}

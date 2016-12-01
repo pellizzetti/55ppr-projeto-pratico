@@ -6,7 +6,7 @@ import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
 import br.udesc.ceavi.designpatterns.projetopratico.controllers.CustomerController;
-import br.udesc.ceavi.designpatterns.projetopratico.models.Customer;
+import br.udesc.ceavi.designpatterns.projetopratico.models.customer.Customer;
 
 public class CustomerTableModel extends AbstractTableModel {
 

@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import br.udesc.ceavi.designpatterns.projetopratico.controllers.CustomerController;
-import br.udesc.ceavi.designpatterns.projetopratico.models.Customer;
+import br.udesc.ceavi.designpatterns.projetopratico.models.customer.Customer;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
