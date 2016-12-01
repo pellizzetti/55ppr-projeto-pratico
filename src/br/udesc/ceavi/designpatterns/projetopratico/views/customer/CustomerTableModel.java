@@ -1,9 +1,11 @@
 package br.udesc.ceavi.designpatterns.projetopratico.views.customer;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
 
+import br.udesc.ceavi.designpatterns.projetopratico.controllers.CustomerController;
 import br.udesc.ceavi.designpatterns.projetopratico.models.Customer;
 
 public class CustomerTableModel extends AbstractTableModel {
@@ -11,16 +13,17 @@ public class CustomerTableModel extends AbstractTableModel {
 	private static final long serialVersionUID = 1L;
 
 	private List<Customer> customers;
-
 	private String[] columnNames = { "Nome", "Sobrenome" };
 	private Class<?>[] columnTypes = { String.class, String.class };
+	private static CustomerController controller;
 
 	public CustomerTableModel() {
+		controller = CustomerController.getInstance();
 	}
 
-	public void reload(List<Customer> customers) {
+	public void reload() throws SQLException {
 		
-		this.customers = customers;
+		this.customers = controller.allCustomers();
 		
 		fireTableDataChanged();
 	}

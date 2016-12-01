@@ -1,39 +1,13 @@
 package br.udesc.ceavi.designpatterns.projetopratico.models;
 
 public class BluRayGame extends Game {
-
-	@Override
-	public int getNumberOfPlayers() {
-		return 0;
+	
+	public BluRayGame(String title, int numberOfPlayers) {
+		super(title, numberOfPlayers, "Blu-ray");
 	}
 
-	@Override
-	public String getTitle() {
-		// TODO Auto-generated method stub
-		return null;
+	public BluRayGame(Long id, String title, int numberOfPlayers) {
+		super(id, title, numberOfPlayers, "Blu-ray");
 	}
 
-	@Override
-	public Double getValue() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void setTitle() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void setValue() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void setNumberOfPlayers() {
-		// TODO Auto-generated method stub
-
-	}
 }

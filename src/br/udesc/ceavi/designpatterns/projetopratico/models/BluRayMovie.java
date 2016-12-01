@@ -2,28 +2,12 @@ package br.udesc.ceavi.designpatterns.projetopratico.models;
 
 public class BluRayMovie extends Movie {
 
-	static final String TITLE = "This is a Blu-Ray movie!";
-
-	@Override
-	public String getTitle() {
-		return TITLE;
+	public BluRayMovie(String title, String synopsis) {
+		super(title, synopsis, "Blu-ray");
 	}
 
-	@Override
-	public Double getValue() {
-		// TODO Auto-generated method stub
-		return null;
+	public BluRayMovie(Long id, String title, String synopsis) {
+		super(id, title, synopsis, "Blu-ray");
 	}
 
-	@Override
-	public void setTitle() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void setValue() {
-		// TODO Auto-generated method stub
-
-	}
 }

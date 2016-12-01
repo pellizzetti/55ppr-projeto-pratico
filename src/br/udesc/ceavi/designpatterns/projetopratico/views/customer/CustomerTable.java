@@ -1,6 +1,6 @@
 package br.udesc.ceavi.designpatterns.projetopratico.views.customer;
 
-import java.util.List;
+import java.sql.SQLException;
 
 import javax.swing.JTable;
 
@@ -28,7 +28,7 @@ public class CustomerTable extends JTable {
 		return tableModel.getCustomerAt(i);
 	}
 
-	public void reload(List<Customer> customers) {
-		tableModel.reload(customers);
+	public void reload() throws SQLException {
+		tableModel.reload();
 	}
 }

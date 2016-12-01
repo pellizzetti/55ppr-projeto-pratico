@@ -14,9 +14,9 @@ import br.udesc.ceavi.designpatterns.projetopratico.models.Customer;
 public class CustomerPostgresDao implements GenericDao<Customer> {
 
 	private static final String INSERT     = "INSERT INTO customers (customer_firstname, customer_lastname) VALUES (?, ?)";
-	private static final String DELETE     = "DELETE FROM customers where id = ?";
+	private static final String DELETE     = "DELETE FROM customers where customer_id = ?";
 	private static final String FIND_ALL   = "SELECT * FROM customers";
-	private static final String FIND_BY_ID = "SELECT * FROM customers WHERE id = ?";
+	private static final String FIND_BY_ID = "SELECT * FROM customers WHERE customer_id = ?";
 
 	public Customer insert(Customer aCustomer) throws SQLException {
 		Connection c = DaoFactory.getDatabase("Postgres").openConnection();

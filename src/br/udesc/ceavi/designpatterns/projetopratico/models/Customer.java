@@ -8,10 +8,10 @@ import br.udesc.ceavi.designpatterns.projetopratico.dao.interfaces.GenericDao;
 
 public class Customer {
 
-	private Long id = null;
+	private Long id;
 	private String firstName;
 	private String lastName;
-	
+
 	public Customer(final String firstName, final String lastName) {
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -73,4 +73,5 @@ public class Customer {
 		DaoFactory dao = DaoFactory.getDatabase("Postgres");
 		return dao.getCustomerDao();
 	}
+
 }

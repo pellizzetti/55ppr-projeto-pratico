@@ -26,3 +26,39 @@ WITH (
 );
 ALTER TABLE public.customers
   OWNER TO postgres;
+  
+-- Table: public.games
+
+-- DROP TABLE public.games;
+
+CREATE TABLE public.games
+(
+  game_id serial,
+  game_title character varying(200),
+  game_number_players integer,
+  game_format character varying(20),
+  CONSTRAINT games_pk PRIMARY KEY (game_id)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE public.games
+  OWNER TO postgres;
+  
+-- Table: public.movies
+
+-- DROP TABLE public.movies;
+
+CREATE TABLE public.movies
+(
+  movie_id serial,
+  movie_title character varying(200),
+  movie_synopsis text,
+  movie_format character varying(20),
+  CONSTRAINT movies_pk PRIMARY KEY (movie_id)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE public.movies
+  OWNER TO postgres;
