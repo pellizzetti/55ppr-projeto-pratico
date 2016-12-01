@@ -12,7 +12,7 @@ import br.udesc.ceavi.designpatterns.projetopratico.models.customer.Customer;
 import br.udesc.ceavi.designpatterns.projetopratico.models.product.Game;
 import br.udesc.ceavi.designpatterns.projetopratico.models.product.Movie;
 
-public class Postgres extends DaoFactory {
+public class PostgresFactory extends DaoFactory {
 
 	private static final String DRIVER   = "org.postgresql.Driver";
 	private static final String DATABASE = "55ppr";

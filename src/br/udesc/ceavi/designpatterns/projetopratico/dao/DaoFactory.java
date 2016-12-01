@@ -20,7 +20,7 @@ public abstract class DaoFactory {
 	public static DaoFactory getDatabase(String database) {
 		
 		if (database == "Postgres") {
-			return new Postgres();
+			return new PostgresFactory();
 		}
 		
 		return null;
