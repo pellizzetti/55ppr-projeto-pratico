@@ -28,8 +28,8 @@ public class CustomerController {
 		return aCustomer;
 	}
 
-	public void delete(Long CustomerId) throws SQLException {
-		Customer aCustomer = Customer.findById(CustomerId);
+	public void delete(Long id) throws SQLException {
+		Customer aCustomer = Customer.findById(id);
 		
 		aCustomer.delete();
 	}

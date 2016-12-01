@@ -31,7 +31,7 @@ public class Postgres extends DaoFactory {
 			e.printStackTrace();
 		} catch (Exception ex) {
 			System.err.println(
-					"NÃ£o foi possÃ­vel conectar com o banco de dados, verifique as configuraÃ§Ãµes de conexÃ£o e se o driver foi instalado!");
+					"Não foi possível conectar com o banco de dados, verifique as configurações de conexão e se o driver foi instalado!");
 		}
 		return null;
 	}
